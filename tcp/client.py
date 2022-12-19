@@ -1,8 +1,10 @@
 import socket
 
 with socket.socket() as s:
-    s.connect((socket.gethostname(),12345))
+    s.connect(('127.0.0.1',12345))
 
-    print(s.recv(1024).decode())
+    s.send('client-msg'.encode())
+    
+    print('Message from the server',s.recv(1024).decode())
 
     s.close()
